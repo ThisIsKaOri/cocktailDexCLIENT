@@ -1,12 +1,14 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IngredientType } from '../../models/Ingredient';
-import { Link } from 'react-router-dom';
 import { IngredientItem } from './IngredientItem';
+import { useSearchParams, Link } from 'react-router-dom';
 
 const baseUrl = 'http://localhost:3000/v1/ingredients';
 
 export const IngredientsList = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams({});
 
     const [name, setName] = useState("");
     const [ingredients, setIngredients] = useState([]);
@@ -15,7 +17,7 @@ export const IngredientsList = () => {
 
         let url = baseUrl;
 
-        name ? url += `?name=${name}` : url = url;
+        searchParams ? url += `?${searchParams}` : url = url;
 
         axios.get(`${url}`)
             .then(response => {
@@ -26,13 +28,18 @@ export const IngredientsList = () => {
 
                 console.error(error);
             });
-    }, [name]);
+    }, [searchParams, name]);
 
     return (
-        <>
+        <div style={{textAlign: "left"}}>
+        <h1 style={{margin: "16px 0 0 24px"}}>Ingredients</h1>
             <input type="search" id="search" name="search" placeholder="Search by name"
                 style={{ margin: "16px", maxWidth: "90%" }}
-                onChange={(event) => setName(event.target.value)}
+                onChange={(event) => {
+                    event.target.value ? setSearchParams({ name: event.target.value }) :
+                    setSearchParams({});
+                    setName(event.target.value)
+                }}
             />
             {ingredients.map((item: IngredientType, index) => {
                 return (
@@ -42,6 +49,6 @@ export const IngredientsList = () => {
                 )
             }
             )}
-        </>
+        </div>
     );
 }

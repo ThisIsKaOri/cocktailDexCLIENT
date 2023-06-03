@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom"
-import { CocktailType } from "../../models/Cocktail";
 
 const baseUrl = 'http://localhost:3000/v1/cocktails';
-const clearUrl = () => window.location.href = "";
 
 export const CocktailDetails = () => {
 
@@ -43,7 +41,12 @@ export const CocktailDetails = () => {
             <div className="actions"
                 style={{ display: "flex", justifyContent: "flex-end" }}>
                 <button
-                    style={{ width: "60px", aspectRatio: "1/1", border: "none" }}
+                    style={{
+                        color: "#f4511e",
+                        width: "60px",
+                        aspectRatio: "1/1",
+                        border: "none"
+                    }}
                     className="secondary outline"
                     onClick={() => navigate('/cocktails')}
                 >
@@ -60,24 +63,31 @@ export const CocktailDetails = () => {
                 <h6>Ingredients:</h6>
                 {cocktail.recipe.map(item => {
                     return (
-                    <p>{item.qty} <Link to={`/ingredients/${item.ingredient}`}>{item.ingredient}</Link></p>
+                        <p style={{marginBottom: "8px"}}>{item.qty} <Link to={`/ingredients/${item.ingredient}`}>{item.ingredient}</Link></p>
                     );
                 })}
-                <h6>Glass:</h6>
+                <h6 style={{marginBottom: "8px"}}>Glass:</h6>
                 <p>{cocktail.glass}</p>
-                <h6>Method:</h6>
+                <h6 style={{marginBottom: "8px"}}>Method:</h6>
                 <p>{cocktail.method}</p>
-                <h6>Garnish:</h6>
+                <h6 style={{marginBottom: "8px"}}>Garnish:</h6>
                 <p>{cocktail.garnish}</p>
-                <h6>Variants:</h6>
-                {cocktail.variants[0] == '-' ? "none" :
-                    cocktail.variants.map(item => {
-                        return (
-                            <Link to={`/cocktails/${item}`}>
-                                <kbd style={{ margin: "2px" }}>{item}</kbd>
-                            </Link>
-                        );
-                    })}
+                {cocktail.variants.length != 0 ? (
+                    <>
+                        <h6 style={{marginBottom: "8px"}}>Variants:</h6>
+                        {cocktail.variants.map(item => {
+                            return (
+                                <Link to={`/cocktails/${item}`}>
+                                    <kbd style={{
+                                        backgroundColor: "#f4511e",
+                                        color: "#fff",
+                                        margin: "2px"
+                                    }}>{item}</kbd>
+                                </Link>
+                            );
+                        })}
+                    </>
+                ) : "" }                    
             </div>
         </div>
     )

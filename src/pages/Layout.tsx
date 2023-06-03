@@ -21,6 +21,11 @@ export const Layout = () => {
                     fontSize: "18px"
                 }}>
                     <li>
+                        <Link style={{ aspectRatio: "3/1" }} to="/user">
+                        <i className="bi bi-person-circle"></i>
+                        </Link>
+                    </li>
+                    <li>
                         <Link style={{ aspectRatio: "3/1" }} to="/home">
                             <i className="bi bi-columns-gap"></i>
                         </Link>

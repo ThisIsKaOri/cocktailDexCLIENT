@@ -14,8 +14,8 @@ export const IngredientItem = ({ ingredient }: IngredientItemProps) => {
             <div style={{ display: "flex", flexDirection: "row" }}
             //</Card>onClick={() => navigate('/cocktails/:name')}
             >
-                <div style={{ width: "30%", aspectRatio: '1/1', marginRight: "16px" }}>
-                    {ingredient.img ? <img src={ingredient.img}/> : <i className="bi bi-cup-straw" style={{ fontSize: "50px" }}></i>}
+                <div style={{ width: "40%", aspectRatio: '1/1', marginRight: "16px" }}>
+                    <img src={ingredient.img} style={{opacity: "0.8"}}/>
                 </div>
                 <hgroup style={{ textAlign: "left" }}>
                     <h3>{`${ingredient.name[0].toUpperCase()}${ingredient.name.slice(1)}`}</h3>

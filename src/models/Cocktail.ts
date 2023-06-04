@@ -1,4 +1,4 @@
-type RecipeIgredient = {
+export type RecipeIgredient = {
 
     ingredient: string;
     qty?: string;

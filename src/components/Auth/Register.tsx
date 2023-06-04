@@ -1,14 +1,9 @@
-import { match } from 'assert';
-import axios, { AxiosError } from 'axios';
-import { log } from 'console';
+import axios from 'axios';
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { userValidation } from '../../utils/userValidation';
 
-type RegisterProps = {
 
-    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const baseUrl = 'http://localhost:3000/v1/auth/signup';
 //regEx per la mail: 
@@ -32,7 +27,7 @@ const Register = () => {
     const [matchFocus, setMatchFocus] = useState(false);
 
     //utilizzo questi state per il messaggio di errore o il successo
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState(''); // token per la validazione
     const [serverMsg, setServerMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -84,14 +79,14 @@ const Register = () => {
         <>
         {success ? (
             <div className="container">
+
                 <h1 style={{ margin: "32px 0" }}>Welcome to the Family!</h1>
                 <p onClick={() => {
                     userValidation(token);
                     setToken('');
                 }}>{token ? 'Validate your data' : 'Thank You!'}</p>
-                <span>
-                    <Link to="/user/login">Sign In</Link>
-                </span>
+                <span><Link to="/user/login">Sign In</Link></span>
+
             </div>
         ) : (
             <>
@@ -110,7 +105,9 @@ const Register = () => {
                     </footer>
                   </article>
             </dialog>
+
             <div className="container" style={{ textAlign: "left" }}>
+
                 <h1 style={{ margin: "32px 0" }}>Register</h1>
                 <form onSubmit={submitHandler}>
 
@@ -164,10 +161,20 @@ const Register = () => {
 
                     <button disabled={!validEmail || !pwd || !validMatch ? true : false}
                         type="submit">Sign Up
-                    </button>    
+                    </button>  
+
                 </form>
-                <span><br/>Already registered?<br/></span>
-                <span><Link to="/email/login">Sign In</Link></span>
+                <div style={{
+                        textAlign: "center", 
+                        marginTop: "32px", 
+                        borderTop: "#546e7a solid 1px",
+                        paddingTop: "16px"
+                    }}>
+                    <p>Already registered?</p>
+                    <button className="outline">
+                        <Link to="/user/login">Sign In</Link>
+                    </button>
+                </div>
             </div>
             </>
         )}

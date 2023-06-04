@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom"
+import useAuth, { AuthData } from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3000/v1/cocktails';
 
 export const CocktailDetails = () => {
+
+    const { user } = useAuth() as AuthData;
 
     let params = useParams();
     let navigate = useNavigate();
@@ -36,30 +39,35 @@ export const CocktailDetails = () => {
                 console.error(error);
             });
     }, [params]);
+
+
     return (
         <div className="container" style={{ marginBottom: "100px" }}>
+
             <div className="actions"
                 style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button
+                <button className="secondary outline" 
+                    onClick={() => navigate('/cocktails')}
                     style={{
                         color: "#f4511e",
                         width: "60px",
                         aspectRatio: "1/1",
                         border: "none"
-                    }}
-                    className="secondary outline"
-                    onClick={() => navigate('/cocktails')}
-                >
-                    <i className="bi bi-x-lg"></i>
-                </button>
+                    }}  
+                ><i className="bi bi-x-lg"></i></button>
             </div>
+
             <img src={cocktail.img} style={{ width: "60%", height: "auto" }} />
+            
             <hgroup style={{ textAlign: "left" }}>
-                <h1>{`${cocktail.name[0].toUpperCase()}${cocktail.name.slice(1)}`}</h1>
+                <h1>
+                    {`${cocktail.name[0].toUpperCase()}${cocktail.name.slice(1)}`}
+                </h1>
                 <h5>{`${cocktail.ibaFamily}`}</h5>
                 <h5>{cocktail.alcoholic ? "alcoholic" : "analcoholic"}</h5>
             </hgroup>
-            <div style={{ textAlign: "left" }}>
+
+            <div style={{ textAlign: "left", marginBottom: "70px"}}>
                 <h6>Ingredients:</h6>
                 {cocktail.recipe.map(item => {
                     return (
@@ -89,6 +97,14 @@ export const CocktailDetails = () => {
                     </>
                 ) : "" }                    
             </div>
+
+            {user.isAdmin && 
+                <button className="outline">
+                    <Link to={`/cocktails/edit/${cocktail.name}`}>
+                    Modify <i className="bi bi-pencil-fill"></i>
+                    </Link>
+                </button>
+            }
         </div>
     )
 }

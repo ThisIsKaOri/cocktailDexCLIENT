@@ -11,12 +11,20 @@ export const IngredientItem = ({ ingredient }: IngredientItemProps) => {
     return (
 
         <Card keyValue={ingredient._id}>
-            <div style={{ display: "flex", flexDirection: "row" }}
-            //</Card>onClick={() => navigate('/cocktails/:name')}
+            <div 
+                style={{
+                    display: "flex", 
+                    flexDirection: "row",
+                    alignItems: "center"
+                }}
             >
-                <div style={{ width: "40%", aspectRatio: '1/1', marginRight: "16px" }}>
-                    <img src={ingredient.img} style={{opacity: "0.8"}}/>
-                </div>
+            <div style={{maxHeight: "60px", aspectRatio: '1/1', margin: "0 32px 8px 16px"}}>
+            { ingredient.img ? (
+                    <img src={ingredient.img}/> 
+                ) : ( 
+                    <i className="bi bi-cup-straw" style={{fontSize: "50px"}}></i>
+                )}
+            </div>
                 <hgroup style={{ textAlign: "left" }}>
                     <h3>{`${ingredient.name[0].toUpperCase()}${ingredient.name.slice(1)}`}</h3>
                     <h6>{ingredient.replacements?.join(',')}</h6>

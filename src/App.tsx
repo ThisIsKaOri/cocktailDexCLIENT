@@ -10,7 +10,9 @@ import LogIn from './components/Auth/LogIn';
 import Register from './components/Auth/Register';
 import User from './pages/User';
 import { AuthProvider } from './context/AuthProvider';
-import EditCocktailDetails from './pages/EditCocktailDetails';
+import EditCocktailDetails from './pages/CocktailEdit';
+import CocktailEdit from './pages/CocktailEdit';
+import CocktailAdd from './pages/CocktailAdd';
 
 
 
@@ -31,7 +33,8 @@ function App() {
             <Route path="/home" index element={<Home />} />
             <Route path="/cocktails" element={<Cocktails />}></Route>
             <Route path="/cocktails/:cocktailName" element={<CocktailDetails />} />
-            <Route path="/cocktails/edit/:cocktailName" element={<EditCocktailDetails />} />
+            <Route path="/cocktails/edit/:cocktailName" element={<CocktailEdit />} />
+            <Route path="/cocktails/add" element={<CocktailAdd />} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/ingredients/:ingredientName" element={<IngredientDetails />} />
           </Route>

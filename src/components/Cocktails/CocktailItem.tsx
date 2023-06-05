@@ -14,11 +14,19 @@ export const CocktailItem = ({ cocktail }: CocktailItemProps) => {
     return (
 
         <Card keyValue={cocktail._id}>
-            <div style={{display: "flex", flexDirection: "row"}}
-            //</Card>onClick={() => navigate('/cocktails/:name')}
+            <div 
+                style={{
+                    display: "flex", 
+                    flexDirection: "row",
+                    alignItems: "center"
+                }}
             >
-            <div style={{width: "30%", aspectRatio: '1/1', marginRight: "16px"}}>
-            { cocktail.img ? <img src={cocktail.img}/> : <i className="bi bi-cup-straw" style={{fontSize: "50px"}}></i>}
+            <div style={{maxHeight: "60px", aspectRatio: '1/1', margin: "0 32px 8px 16px"}}>
+            { cocktail.img ? (
+                    <img src={cocktail.img}/> 
+                ) : ( 
+                    <i className="bi bi-cup-straw" style={{fontSize: "50px"}}></i>
+                )}
             </div>
             <hgroup style={{textAlign: "left"}}>
                 <h3>{`${cocktail.name[0].toUpperCase()}${cocktail.name.slice(1)}`}</h3>

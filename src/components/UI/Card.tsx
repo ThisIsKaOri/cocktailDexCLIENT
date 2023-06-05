@@ -12,7 +12,7 @@ export const Card = ({ children, keyValue, className }: CardProps) => {
     const classes = `${className}`;
 
     return (
-        <article key={keyValue} className={classes} 
+        <article key={`card${keyValue}`} className={classes} 
         style={{margin: "2px 0", padding: "16px"}}
         >
             {children}

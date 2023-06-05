@@ -198,6 +198,7 @@ const IngredientEdit = () => {
                     </footer>
                 </article>
             </dialog>
+            
             <div className='container' style={{ textAlign: "left" }}>
 
                 <div className="actions"
@@ -212,6 +213,7 @@ const IngredientEdit = () => {
                         }}
                     ><i className="bi bi-x-lg"></i></button>
                 </div>
+
                 <h1 style={{ margin: "32px 0" }}>Edit Ingredient</h1>
 
                 <form onSubmit={submitHandler} style={{ marginBottom: '70px' }} >

@@ -42,9 +42,11 @@ export const CocktailsList = () => {
             {cocktails.length == 0 && <p>no cocktails found..</p>}
             {cocktails.map((item: CocktailType, index) => {
                 return (
+                    <div key={`cocktail${index}`}>
                     <Link to={`/cocktails/${item.name}`}>
                         <CocktailItem cocktail={item} />
                     </Link>
+                    </div>
                 )
             }
             )}

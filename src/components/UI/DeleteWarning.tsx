@@ -16,7 +16,9 @@ const DeleteWarning = ({ endpoint, name }: DeleteWarningProps) => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    let successUrl = location.pathname.replace(`/${name}`, '');
+    const successName = name.replace(' ', '%20');
+    let successUrl = String(location.pathname).replace(`/${successName}`, '');
+    console.log(successUrl);
 
     const [dismiss, setDismiss] = useState(false)
     const [success, setSuccess] = useState(false);

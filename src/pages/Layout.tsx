@@ -21,15 +21,15 @@ const Layout = () => {
                     fontSize: "18px"
                 }}>
                     <li>
-                        <Link style={{ aspectRatio: "3/1" }} to="/user">
+                        <Link style={{ aspectRatio: "3/1" }} to="/">
                         <i className="bi bi-person-circle"></i>
                         </Link>
                     </li>
-                    <li>
-                        <Link style={{ aspectRatio: "3/1" }} to="/home">
+                    {/* <li>
+                        <Link style={{ aspectRatio: "3/1" }} to="/favorites">
                             <i className="bi bi-columns-gap"></i>
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link style={{ aspectRatio: "3/1" }} to="/cocktails">
                             <i className="bi bi-cup-straw"></i>

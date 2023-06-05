@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Home = () => {
+const Favorites = () => {
   
   return (
     <h1>CocktailDex</h1>
   )
 }
 
-export default Home
+export default Favorites

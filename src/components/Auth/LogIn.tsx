@@ -57,7 +57,7 @@ const LogIn = () => {
             setUser({...loggedUser});
             setAccessToken(user.token!);
             //Yeeeeee
-            navigate("/user");
+            navigate("/");
         } catch (error: any) {
             console.log(error);
             if (error.response?.status === 404) {

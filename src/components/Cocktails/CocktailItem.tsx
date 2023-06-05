@@ -21,7 +21,7 @@ export const CocktailItem = ({ cocktail }: CocktailItemProps) => {
                     alignItems: "center"
                 }}
             >
-            <div style={{maxHeight: "60px", aspectRatio: '1/1', margin: "0 32px 8px 16px"}}>
+            <div key={`img${cocktail._id}`}style={{maxHeight: "60px", aspectRatio: '1/1', margin: "0 32px 8px 16px"}}>
             { cocktail.img ? (
                     <img src={cocktail.img}/> 
                 ) : ( 

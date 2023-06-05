@@ -62,8 +62,9 @@ const IngredientDetails = () => {
             <div style={{ textAlign: "left", marginBottom: "70px" }}>
                 <p>{ingredient.description}</p>
                 <h6 style={{marginBottom: "8px"}}>Used in:</h6>
-                {ingredient.cocktails.map(item => {
+                {ingredient.cocktails.map((item, index) => {
                     return (
+                        <div key={`cocktail${index}`}>
                         <Link to={`/cocktails/${item}`}>
                             <kbd style={{
                                 backgroundColor: "#f4511e",
@@ -71,13 +72,15 @@ const IngredientDetails = () => {
                                 margin: "2px"
                             }}>{item}</kbd>
                         </Link>
+                        </div>
                     );
                 })}
                 {ingredient.replacements[0] != '-' ? (
                     <>
                     <h6 style={{marginBottom: "8px"}}>Replacements:</h6>
-                    {ingredient.replacements.map(item => {
+                    {ingredient.replacements.map((item, index) => {
                         return (
+                            <span key={`replacement${index}`}>
                             <Link to={`/ingredients/${item}`}>
                                 <kbd style={{
                                     backgroundColor: "#f4511e",
@@ -86,6 +89,7 @@ const IngredientDetails = () => {
                                 }}
                             >{item}</kbd>
                             </Link>
+                            </span>
                         );
                     })}
                     </>

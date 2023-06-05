@@ -43,9 +43,11 @@ export const IngredientsList = () => {
             />
             {ingredients.map((item: IngredientType, index) => {
                 return (
+                    <div key={`ingredient${index}`}>
                     <Link to={`/ingredients/${item.name}`}>
                         <IngredientItem ingredient={item} />
                     </Link>
+                    </div>
                 )
             }
             )}

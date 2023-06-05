@@ -2,11 +2,12 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './pages/Layout';
-import Home from './pages/Home';
 
 import User from './pages/User';
 import Register from './components/Auth/Register';
 import LogIn from './components/Auth/LogIn';
+
+import Favorites from './pages/Favorites';
 
 import Cocktails from './pages/Cocktails';
 import CocktailDetails from './pages/CocktailDetails';
@@ -19,6 +20,7 @@ import IngredientEdit from './pages/IngredientEdit';
 import IngredientAdd from './pages/IngredientAdd';
 
 import { AuthProvider } from './context/AuthProvider';
+import EditReducer from './pages/EditReducer';
 
 
 
@@ -32,14 +34,15 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/user" element={<User />} />
+          <Route element={<Layout />}>
+            <Route path="/" index element={<User />} />
             <Route path="/user/login" element={<LogIn />} />
             <Route path="/user/register" element={<Register />} />
-            <Route path="/home" index element={<Home />} />
+            {/* <Route path="/favorites" index element={<Favorites />} /> */}
             <Route path="/cocktails" element={<Cocktails />}></Route>
             <Route path="/cocktails/:cocktailName" element={<CocktailDetails />} />
-            <Route path="/cocktails/edit/:cocktailName" element={<CocktailEdit />} />
+            {/* <Route path="/cocktails/edit/:cocktailName" element={<CocktailEdit />} /> */}
+            <Route path="/cocktails/edit/:cocktailName" index element={<EditReducer />} />
             <Route path="/cocktails/add" element={<CocktailAdd />} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/ingredients/:ingredientName" element={<IngredientDetails />} />

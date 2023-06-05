@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, createContext, useState } from 'react';
 import { UserType } from '../models/User';
+import { AuthData } from '../hooks/useAuth';
 
 //creo il context
 const AuthContext = createContext({});
@@ -13,7 +14,7 @@ type ContextProps = {
 export const AuthProvider = ({ children } : ContextProps) => {
 
     //questo é l'utente disponibile in tutto il contesto
-    const [user, setUser] : [UserType, Dispatch<SetStateAction<{}>>] = useState({});
+    const [user, setUser] = useState({});
 
     return (
         //il mio provider renderá disponibile l'user e il suo dispatcher

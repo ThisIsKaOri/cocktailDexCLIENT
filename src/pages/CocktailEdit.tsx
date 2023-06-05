@@ -7,7 +7,7 @@ import useAuth, { AuthData } from '../hooks/useAuth';
 const baseUrl = 'http://localhost:3000/v1/cocktails';
 
 
-const EditCocktailDetails = () => {
+const CocktailEdit = () => {
 
     const { user: { token } } = useAuth() as AuthData;
 
@@ -191,7 +191,7 @@ const EditCocktailDetails = () => {
                 setSuccess(true);
             })
             .catch(error => {
-
+                
                 console.log(error);
                 if (error.status === 404) {
 
@@ -378,4 +378,4 @@ const EditCocktailDetails = () => {
     )
 }
 
-export default EditCocktailDetails
+export default CocktailEdit

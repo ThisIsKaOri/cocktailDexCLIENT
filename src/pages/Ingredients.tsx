@@ -1,8 +1,7 @@
-import React from 'react'
 import { IngredientsList } from '../components/Ingredients/IngredientsList'
 
 
-export const Ingredients = () => {
+const Ingredients = () => {
 
   return (
     <main className="container-fluid" style={{padding: "0"}}>
@@ -10,3 +9,5 @@ export const Ingredients = () => {
     </main>
   )
 }
+
+export default Ingredients

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
-export const Layout = () => {
+const Layout = () => {
     return (
         <>
             <Outlet />
@@ -45,3 +45,5 @@ export const Layout = () => {
         </>
     )
 }
+
+export default Layout

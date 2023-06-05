@@ -6,7 +6,7 @@ import DeleteWarning from "../components/UI/DeleteWarning";
 
 const baseUrl = 'http://localhost:3000/v1/cocktails';
 
-export const CocktailDetails = () => {
+const CocktailDetails = () => {
 
     const { user } = useAuth() as AuthData;
 
@@ -123,3 +123,5 @@ export const CocktailDetails = () => {
         </>
     )
 }
+
+export default CocktailDetails

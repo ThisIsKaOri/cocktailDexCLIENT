@@ -1,14 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom"
+import useAuth, { AuthData } from "../hooks/useAuth";
+import DeleteWarning from "../components/UI/DeleteWarning";
 
 const baseUrl = 'http://localhost:3000/v1/ingredients';
 const clearUrl = () => window.location.href = "";
 
-export const IngredientDetails = () => {
+const IngredientDetails = () => {
+
+    const { user } = useAuth() as AuthData
 
     let params = useParams();
     let navigate = useNavigate();
+
+    const [onDelete, setOnDelete] = useState(false);
+
 
     const [ingredient, setIngredient] = useState({
         _id: " ",
@@ -34,6 +41,8 @@ export const IngredientDetails = () => {
             });
     }, [params]);
     return (
+        <>
+        {onDelete && <DeleteWarning endpoint={baseUrl} name={params.ingredientName!} />}
         <div className="container" style={{ marginBottom: "100px" }}>
             <div className="actions"
                 style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -50,7 +59,7 @@ export const IngredientDetails = () => {
                 <h1>{`${ingredient.name[0].toUpperCase()}${ingredient.name.slice(1)}`}</h1>
                 {ingredient.strength ? <h5>{`Strength: ${ingredient.strength}`}</h5> : <h5></h5>}
             </hgroup>
-            <div style={{ textAlign: "left" }}>
+            <div style={{ textAlign: "left", marginBottom: "70px" }}>
                 <p>{ingredient.description}</p>
                 <h6 style={{marginBottom: "8px"}}>Used in:</h6>
                 {ingredient.cocktails.map(item => {
@@ -82,6 +91,23 @@ export const IngredientDetails = () => {
                     </>
                 ) : " "}
             </div>
+
+            {user.isAdmin &&
+                    <>
+                        <button className="outline">
+                            <Link to={`/ingredients/edit/${ingredient.name}`}>
+                                Modify <i className="bi bi-pencil-fill"></i>
+                            </Link>
+                        </button>
+                        <button className="outline"
+                            onClick={() => setOnDelete(!onDelete)}
+                        >Delete</button>
+                    </>
+            }
+
         </div>
+        </>
     )
 }
+
+export default IngredientDetails

@@ -1,18 +1,24 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from './pages/Layout';
-import { Home } from './pages/Home';
-import { Cocktails } from './pages/Cocktails';
-import { CocktailDetails } from './pages/CocktailDetails';
-import { Ingredients } from './pages/Ingredients';
-import { IngredientDetails } from './pages/IngredientDetails';
-import LogIn from './components/Auth/LogIn';
-import Register from './components/Auth/Register';
+
+import Layout from './pages/Layout';
+import Home from './pages/Home';
+
 import User from './pages/User';
-import { AuthProvider } from './context/AuthProvider';
-import EditCocktailDetails from './pages/CocktailEdit';
+import Register from './components/Auth/Register';
+import LogIn from './components/Auth/LogIn';
+
+import Cocktails from './pages/Cocktails';
+import CocktailDetails from './pages/CocktailDetails';
 import CocktailEdit from './pages/CocktailEdit';
 import CocktailAdd from './pages/CocktailAdd';
+
+import Ingredients from './pages/Ingredients';
+import IngredientDetails from './pages/IngredientDetails';
+import IngredientEdit from './pages/IngredientEdit';
+import IngredientAdd from './pages/IngredientAdd';
+
+import { AuthProvider } from './context/AuthProvider';
 
 
 
@@ -37,6 +43,8 @@ function App() {
             <Route path="/cocktails/add" element={<CocktailAdd />} />
             <Route path="/ingredients" element={<Ingredients />} />
             <Route path="/ingredients/:ingredientName" element={<IngredientDetails />} />
+            <Route path="/ingredients/edit/:ingredientName" element={<IngredientEdit />} />
+            <Route path="/ingredients/add" element={<IngredientAdd />} />
           </Route>
         </Routes>
       </BrowserRouter>

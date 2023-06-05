@@ -55,6 +55,7 @@ const DeleteWarning = ({ endpoint, name }: DeleteWarningProps) => {
         <>
         <dialog open={success ? true : false}>
                 <article style={{ width: "90%" }}>
+                    
                     <h3>Cocktail Deleted!</h3>
                     <p>{serverMsg}</p>
                     <footer>
@@ -67,9 +68,14 @@ const DeleteWarning = ({ endpoint, name }: DeleteWarningProps) => {
             </dialog>
         <dialog open={!dismiss ? true : false}>
             <article style={{ width: "90%" }}>
+            
                 <h3>Are you sure?</h3>
+
                 <p>{`You're going to delete ${name}`}</p>
                 <footer>
+                <button className="primary"
+                        onClick={() => setDismiss(!dismiss)}
+                    >No</button>       
                     <button className="secondary"
                         onClick={deleteHandler}
                     >Delete</button>
